@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: evolution-gateway
+server:
+  port: 8585
+
+zuul:
+   ignoredServices: '*'
+   routes:
+      auth-service:
+          path: /uaa/**
+          url: http://localhost:5000
+          stripPrefix: false
+      message:
+        path: /message/**
+        url: http://localhost:8081/api/message
+        sensitive-headers: Cookie,Set-Cookie
+      user:
+        path: /user/**
+        url: http://localhost:8082/api/user
+   add-proxy-headers: true
+
+security:
+  basic:
+    enabled: false

@@ -18,6 +18,10 @@ zuul:
       user:
         path: /user/**
         url: http://localhost:8082/api/user
+      people:
+        path: /people/**
+        url: http://localhost:8083/api/people
+        sensitive-headers: Cookie,Set-Cookie
    add-proxy-headers: true
 
 security:
